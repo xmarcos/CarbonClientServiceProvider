@@ -1,0 +1,43 @@
+{
+    "name": "xmarcos/carbon-client-service-provider",
+    "description": "A Silex Service Provider for Carbon (Graphite's backend)",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "log",
+        "silex",
+        "carbon",
+        "metrics",
+        "provider",
+        "graphite"
+    ],
+    "authors": [
+        {
+            "name": "Marcos Sader",
+            "email": "xmarcos@gmail.com"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/xmarcos/CarbonClientServiceProvider/issues"
+    },
+    "prefer-stable": true,
+    "minimum-stability": "dev",
+    "require": {
+        "silex/silex"           : "~1.1",
+        "xmarcos/carbon-client" : "dev-master"
+    },
+    "require-dev": {
+        "phpunit/phpunit"     : "@stable",
+        "fabpot/php-cs-fixer" : "@stable"
+    },
+    "autoload": {
+        "psr-4": {
+            "xmarcos\\Silex\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "xmarcos\\Silex\\": "tests/"
+        }
+    }
+}
