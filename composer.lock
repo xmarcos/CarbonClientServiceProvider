@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "284082377f0f283fea4333e2e263b777",
+    "hash": "7933548d7a77d3ec5081c4affb6cba14",
     "packages": [
         {
             "name": "pimple/pimple",
@@ -480,16 +480,16 @@
         },
         {
             "name": "xmarcos/carbon-client",
-            "version": "dev-master",
+            "version": "0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/xmarcos/CarbonClient.git",
-                "reference": "7aa67eba0875ba2d2bfdb629f4d2d079e760bf2c"
+                "reference": "bc67d8bf6cbf3ae58527b9dba5a90ac1dd825b46"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/xmarcos/CarbonClient/zipball/7aa67eba0875ba2d2bfdb629f4d2d079e760bf2c",
-                "reference": "7aa67eba0875ba2d2bfdb629f4d2d079e760bf2c",
+                "url": "https://api.github.com/repos/xmarcos/CarbonClient/zipball/bc67d8bf6cbf3ae58527b9dba5a90ac1dd825b46",
+                "reference": "bc67d8bf6cbf3ae58527b9dba5a90ac1dd825b46",
                 "shasum": ""
             },
             "require": {
@@ -522,7 +522,7 @@
                 "graphite",
                 "log"
             ],
-            "time": "2015-01-04 10:09:55"
+            "time": "2015-01-07 07:52:12"
         }
     ],
     "packages-dev": [
@@ -1621,7 +1621,6 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "xmarcos/carbon-client": 20,
         "phpunit/phpunit": 0,
         "fabpot/php-cs-fixer": 0
     },

@@ -24,7 +24,7 @@
     "minimum-stability": "dev",
     "require": {
         "silex/silex"           : "~1.1",
-        "xmarcos/carbon-client" : "dev-master"
+        "xmarcos/carbon-client" : "~0.2"
     },
     "require-dev": {
         "phpunit/phpunit"     : "@stable",
