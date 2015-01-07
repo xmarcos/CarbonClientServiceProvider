@@ -44,7 +44,7 @@ class CarbonClientServiceProvider implements ServiceProviderInterface
     {
         $defaults = [
             'host'      => '127.0.0.1',
-            'port'      => 2004,
+            'port'      => 2003,
             'transport' => 'udp',
             'namespace' => '',
             'stream'    => null,
