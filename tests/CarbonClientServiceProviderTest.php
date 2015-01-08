@@ -84,15 +84,31 @@ class CarbonClientServiceProviderTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException InvalidArgumentException
+     * @dataProvider providerWrongParams
      */
-    public function testRegisterWithInvaidParamsThrowsException()
+    public function testRegisterWithInvalidStreamCreatesFallbackMemoryStream($params)
     {
         $this->app->register(new CarbonClientServiceProvider(), [
-            'carbon.params' => [
-                'transport' => 'invalid_transport',
-            ]
+            'carbon.params' => $params
         ]);
-        $trigger_exception = $this->app['carbon'];
+        $carbon_stream = (new ReflectionClass($this->app['carbon']))->getProperty('stream');
+        $carbon_stream->setAccessible(true);
+
+        $type = stream_get_meta_data($carbon_stream->getValue($this->app['carbon']))['stream_type'];
+        $this->assertEquals('MEMORY', $type);
+    }
+
+    public function providerWrongParams()
+    {
+        return [
+            [['transport' => 'invalid_transport']],
+            [
+                [
+                    'transport' => 'tcp',
+                    'host'      => 'localhost',
+                    'port'      => 25,
+                ]
+            ],
+        ];
     }
 }

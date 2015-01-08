@@ -1,6 +1,7 @@
 <?php
 namespace xmarcos\Silex;
 
+use ErrorException;
 use Silex\Application;
 use xmarcos\Carbon\Client;
 use InvalidArgumentException;
@@ -55,21 +56,27 @@ class CarbonClientServiceProvider implements ServiceProviderInterface
             array_intersect_key($params, $defaults)
         );
 
-        if (!empty($args['stream'])) {
-            $stream = $args['stream'];
-        } else {
+        $stream    = $args['stream'];
+        $exception = null;
+
+        if (!is_resource($stream)) {
+            set_error_handler(function ($code, $message, $file = null, $line = 0) use (&$exception) {
+                $exception = new ErrorException($message, $code, null, $file, $line);
+            });
             $address = sprintf('%s://%s:%d', $args['transport'], $args['host'], $args['port']);
-            $stream  = @stream_socket_client($address);
+            $stream  = stream_socket_client($address);
+            restore_error_handler();
         }
 
         try {
             $carbon = new Client($stream);
             $carbon->setNamespace($args['namespace']);
-
-            return $carbon;
         } catch (InvalidArgumentException $e) {
-            throw $e;
+            $carbon = new Client(fopen('php://memory', 'r'));
+            $carbon->setNamespace($args['namespace']);
         }
+
+        return $carbon;
     }
 
     /**
